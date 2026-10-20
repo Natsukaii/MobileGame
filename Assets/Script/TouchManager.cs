@@ -16,6 +16,10 @@ public class TouchManager : MonoBehaviour
     private InputAction _touchPositionAction;
     private InputAction _touchPressAction;
     
+    public UnityEvent<Vector3> OnTouchStart = new UnityEvent<Vector3>();
+    public UnityEvent<Vector3> OnTouchPosition = new UnityEvent<Vector3>();
+    public UnityEvent<Vector3> OnTouchEnd = new UnityEvent<Vector3>();
+    
     private ITouch _touchedObject;
     
 
@@ -44,18 +48,18 @@ public class TouchManager : MonoBehaviour
     {
         if (_touchPositionAction.triggered)
         {
+            
             Vector3 touchPosition = mainCamera.ScreenToWorldPoint(_touchPositionAction.ReadValue<Vector2>());
             touchPosition.z = 0;
+            OnTouchPosition.Invoke(touchPosition);
             
             _onTouchPosition.Invoke(touchPosition);
             if (_objectTouched != null)
             {
-                _objectTouched.GetComponent<ITouch>().OnTouchContinue(touchPosition);
+                _objectTouched.GetComponent<ITouch>()?.OnTouchContinue(touchPosition);
                 _debugText.text = touchPosition + " " + _objectTouched.name;
-                
             }
         }
-       
     }
 
     [SerializeField] private LayerMask _layerMask;
@@ -63,6 +67,7 @@ public class TouchManager : MonoBehaviour
     {
         Vector3 mousePosition =
             mainCamera.ScreenToWorldPoint(_touchPositionAction.ReadValue<Vector2>());
+        OnTouchStart.Invoke(mousePosition);
 
         Vector2 point = new Vector2(
             mousePosition.x,
@@ -81,7 +86,11 @@ public class TouchManager : MonoBehaviour
         if (_objectTouched != null)
         {
             _touchedObject = _objectTouched.GetComponent<ITouch>();
-            _touchedObject.OnTouchStart(mousePosition);
+            _touchedObject?.OnTouchStart(mousePosition);
+            if (_touchedObject == null)
+                Debug.Log("No ITouch on " + _objectTouched.name + "");
+            
+            _debugText.text = mousePosition + " " + _objectTouched.name;
         }
         else
         {
@@ -91,6 +100,10 @@ public class TouchManager : MonoBehaviour
     
     private void TouchReleased(InputAction.CallbackContext context)
     {
+        Vector3 mousePosition =
+            mainCamera.ScreenToWorldPoint(_touchPositionAction.ReadValue<Vector2>());
+        OnTouchEnd.Invoke(mousePosition);
+        
         if (_objectTouched == null)
             return;
 

@@ -6,14 +6,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text _debugText;
+
+    void Awake()
+    {
+        Application.targetFrameRate = 120;
+    }
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         LoadLevel("Menu");
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -24,7 +27,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadSceneCoroutine(sceneName));
     }
     
-    IEnumerator LoadSceneCoroutine(string sceneNam)
+    public void LoadLevel(LevelData levelData)
+    {
+        LoadLevel("Game");
+    }
+    
+    IEnumerator LoadSceneCoroutine(string sceneNam) 
     {
         AsyncOperation operation =
             SceneManager.LoadSceneAsync(
