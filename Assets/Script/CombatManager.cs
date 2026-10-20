@@ -16,11 +16,11 @@ public class CombatManager : MonoBehaviour
     private float _timer;
     private float _timeToWait;
 
-    private void Start()
+    public void StartCombat(LevelData levelData)
     {
+        _levelData = levelData;
         SpawnNextWave();
     }
-
     
     private void Update()
     {

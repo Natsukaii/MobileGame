@@ -597,6 +597,7 @@ MonoBehaviour:
   - {fileID: 1398551217}
   - {fileID: 1086478641}
   _levelData: {fileID: 11400000, guid: 38e5cb9598984bb4da98f3d520c4ec0d, type: 2}
+  _timeBetweenWaves: 5
 --- !u!4 &710611920
 Transform:
   m_ObjectHideFlags: 0

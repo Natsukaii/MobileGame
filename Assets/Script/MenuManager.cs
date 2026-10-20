@@ -1,10 +1,16 @@
+using TMPro;
 using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
+    [Header("Debug")]
+    [SerializeField] private TMP_Text _debugText;
+    
+    [Header("Camera")]
     [Tooltip("Positions monde de la camera, dans l'ordre de gauche a droite.")]
     [SerializeField] private Vector3[] _cameraPositions;
     [SerializeField] private int _startPositionIndex = 1;
+    [Header("Slide")]
     [SerializeField, Min(0.01f)] private float _slideDuration = 0.3f;
     [Tooltip("Distance minimale du swipe, en proportion de la largeur de l'ecran.")]
     [SerializeField, Range(0.01f, 1f)] private float _swipeThreshold = 0.1f;
@@ -112,4 +118,17 @@ public class MenuManager : MonoBehaviour
         if (!hasFocus)
             _isTouching = false;
     }
-}
+    
+    public void loadLevel(LevelData levelData)
+    {
+        if (_isTouching)
+            return;
+
+        if (levelData == null)
+        {
+            _debugText.text = "Level data is null";
+            return;
+        }
+
+        FindAnyObjectByType<GameManager>().LoadLevel("game", levelData);
+    }}
