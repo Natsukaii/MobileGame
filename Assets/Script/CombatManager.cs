@@ -11,6 +11,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private Transform[] _EnemiesSpawns;
     [SerializeField] private LevelData _levelData;
     [SerializeField] private float _timeBetweenWaves = 10;
+    [SerializeField] private GameObject _startWaveBtn;
 
     private CombatState _state;
     private float _timer;
@@ -18,6 +19,7 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(LevelData levelData)
     {
+        _startWaveBtn.SetActive(true);
         _levelData = levelData;
         SpawnNextWave();
     }
@@ -30,21 +32,15 @@ public class CombatManager : MonoBehaviour
         switch (_state)
         {
             case CombatState.Preparing:
+                if (!_startWaveBtn.activeSelf)
+                    _startWaveBtn.SetActive(true);
                 break;
             
-            case CombatState.WaitingtWave:
+            case CombatState.WaitingWave:
                 if (_timer >= _timeBetweenWaves)
                 {
                     _timer = 0;
-                    _state = CombatState.WaitingForNextWave;
-                }
-                break;
-            
-            case CombatState.WaitingForNextWave:
-                if (_timer >= _timeBetweenWaves)
-                {
-                    _timer = 0;
-                    SpawnNextWave();
+                    _state = CombatState.Preparing;
                 }
                 break;
             
@@ -58,9 +54,11 @@ public class CombatManager : MonoBehaviour
     private int _nextSpawnIndex;
     private int _spawnFrame = -1;
     private int _spawnsThisFrame;
+    private float _wavetime;
     public void SpawnNextWave()
     {
-        _state = CombatState.WaitingtWave;
+        _startWaveBtn.SetActive(false);
+        _state = CombatState.WaitingWave;
         
         if (_levelData == null || _EnemiesSpawns == null || _EnemiesSpawns.Length == 0)
             return;
@@ -73,7 +71,7 @@ public class CombatManager : MonoBehaviour
         }
 
         WaveData wave = _levelData.waves[_nextWaveIndex];
-
+        _wavetime = wave.waveTime;
         foreach (EnemyGroup group in wave.enemies)
         {
             if (group.prefab == null)
@@ -91,7 +89,7 @@ public class CombatManager : MonoBehaviour
             yield break;
 
         float[] spawnTimes = new float[group.count];
-        float duration = Mathf.Max(0f, group.waveTime);
+        float duration = Mathf.Max(0f, _wavetime);
         int scheduled = 0;
         while (scheduled < group.count)
         {
@@ -152,7 +150,6 @@ public class CombatManager : MonoBehaviour
 enum CombatState
 {
     Preparing,
-    WaitingtWave,
-    WaitingForNextWave,
+    WaitingWave,
     End
 }

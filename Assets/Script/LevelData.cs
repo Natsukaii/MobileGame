@@ -13,6 +13,7 @@ public class LevelData : ScriptableObject
 public class WaveData
 {
     public List<EnemyGroup> enemies = new List<EnemyGroup>();
+    [Min(0f)] public float waveTime = 3;
 }
 
 [Serializable]
@@ -20,5 +21,4 @@ public class EnemyGroup
 {
     public GameObject prefab;
     [Min(1)] public int count = 1;
-    [Min(0f)] public float waveTime = 1;
 }

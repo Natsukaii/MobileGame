@@ -1,16 +1,16 @@
+using TMPro;
 using UnityEngine;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour , IHealth
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float health = 3;
+    [SerializeField] private float MaxDamageTaken = 3;
+    
+    public void TakeDamage(float damage)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (damage > 0)
+        {
+            health -= 1;
+        }
     }
 }
