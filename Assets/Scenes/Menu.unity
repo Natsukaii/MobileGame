@@ -417,6 +417,26 @@ MonoBehaviour:
     - {fileID: -2755791315306370890, guid: 4d3ac48662c0b2a4b9639c99eb567aa0, type: 3}
     - {fileID: 511895092273072963, guid: 4dbaa2f768a69024b93968bde09af82e, type: 3}
     - {fileID: -3838872651087377694, guid: a557a991feb4f754b95e86beb958235d, type: 3}
+  - name: "\xE9toile"
+    framerate: 15
+    frames:
+    - {fileID: 8464202282911398084, guid: a9329cb2bbcc07f4b8972fe872612d5d, type: 3}
+    - {fileID: 7418652272508035025, guid: c353d77c0b0d98a4cb2b5115cea5b675, type: 3}
+    - {fileID: -8147342089942282892, guid: 4813cc1a34ea2e843870eceed6f5a021, type: 3}
+    - {fileID: -8880576204738939792, guid: 63f8852436194314b9e7dd0aa23aece6, type: 3}
+    - {fileID: 8226340397574926576, guid: 0e51218ff6ba1fa48a669a841f674283, type: 3}
+    - {fileID: 5809502882104345953, guid: 07dde9568c01dc449b62ada0156867c5, type: 3}
+    - {fileID: -9012473710243275382, guid: 0c2e78bf14f376047a1a1d690a431658, type: 3}
+  - name: bulle
+    framerate: 15
+    frames:
+    - {fileID: 1255346022675607646, guid: ded5505cee313584888a98cfe25c6213, type: 3}
+    - {fileID: -3124517527782403659, guid: 8d9636cbf0cddf74691b888141f3974b, type: 3}
+    - {fileID: -6690020763144363654, guid: 2825cdf25ae1a2642a1b4b2211cc0689, type: 3}
+    - {fileID: -914087637387757086, guid: 1ae49d18d4855b04eae158093ee0a2d3, type: 3}
+    - {fileID: 2210394723826754432, guid: 03998d9f7e446e542af84fe29ba16031, type: 3}
+    - {fileID: 3465707668420908308, guid: 6138fe37b0630db45a179a72f52d80bd, type: 3}
+    - {fileID: 1888237097, guid: 1dcaa0fe08a984f4da1c3abeeec67f4b, type: 3}
   spriteRenderer: {fileID: 99517456}
 --- !u!212 &99517456
 SpriteRenderer:
@@ -4298,6 +4318,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 99517455}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VfxAnimator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: bulle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7073270283346075462, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
       propertyPath: m_Name
       value: ButtonLevel (3)
@@ -5864,6 +5916,38 @@ PrefabInstance:
     - target: {fileID: 3591709876151820296, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 99517455}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VfxAnimator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "\xE9toile"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7073270283346075462, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
       propertyPath: m_Name
