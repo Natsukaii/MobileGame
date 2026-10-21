@@ -411,13 +411,12 @@ MonoBehaviour:
   - name: Booster
     framerate: 15
     frames:
-    - {fileID: 8100544514202865622, guid: 9e0c218bb5c393f478e69473d5c8ec19, type: 3}
-    - {fileID: 3294625623755877688, guid: 9e0c218bb5c393f478e69473d5c8ec19, type: 3}
-    - {fileID: 3523634302197056572, guid: 9e0c218bb5c393f478e69473d5c8ec19, type: 3}
-    - {fileID: -5588064400511218220, guid: 9e0c218bb5c393f478e69473d5c8ec19, type: 3}
-    - {fileID: -832141761128113621, guid: 9e0c218bb5c393f478e69473d5c8ec19, type: 3}
-    - {fileID: 3276884700380108330, guid: 9e0c218bb5c393f478e69473d5c8ec19, type: 3}
-    - {fileID: -7368985500178463223, guid: 9e0c218bb5c393f478e69473d5c8ec19, type: 3}
+    - {fileID: 2904117306961723034, guid: 4a498f3b552b38346b8018dc7cd312de, type: 3}
+    - {fileID: -8122200272424534979, guid: e5f277cdc02e97543b77d3e262c3bff3, type: 3}
+    - {fileID: -8190987264080653300, guid: d701bd5a61b5e1348b878467782a92b8, type: 3}
+    - {fileID: -2755791315306370890, guid: 4d3ac48662c0b2a4b9639c99eb567aa0, type: 3}
+    - {fileID: 511895092273072963, guid: 4dbaa2f768a69024b93968bde09af82e, type: 3}
+    - {fileID: -3838872651087377694, guid: a557a991feb4f754b95e86beb958235d, type: 3}
   spriteRenderer: {fileID: 99517456}
 --- !u!212 &99517456
 SpriteRenderer:

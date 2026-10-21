@@ -8,7 +8,7 @@ public class Enemie : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] [Min(0.1f)] private float recastAttaque;
     [SerializeField] private bool isRange;
-    [SerializeField] 
+    //[SerializeField] 
     [FormerlySerializedAs("collider")] [SerializeField] private ColliderEnemi colliderE;
     
     float Timer = 0f;
