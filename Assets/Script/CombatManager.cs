@@ -19,9 +19,9 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(LevelData levelData)
     {
-        _startWaveBtn.SetActive(true);
         _levelData = levelData;
-        SpawnNextWave();
+        _state = CombatState.Preparing;
+        _timer = 0;
     }
     
     private void Update()
@@ -32,8 +32,22 @@ public class CombatManager : MonoBehaviour
         switch (_state)
         {
             case CombatState.Preparing:
-                if (!_startWaveBtn.activeSelf)
-                    _startWaveBtn.SetActive(true);
+                if (AreAllEnemiesDead())
+                {
+                    if (!_startWaveBtn.activeSelf)
+                    {
+                        _startWaveBtn.SetActive(true);
+                        SetAllAlliesLocked(false);
+                    }
+                }
+                else
+                {
+                    if (_startWaveBtn.activeSelf)
+                    {
+                        _startWaveBtn.SetActive(false);
+                        SetAllAlliesLocked(true);
+                    }
+                }
                 break;
             
             case CombatState.WaitingWave:
@@ -47,7 +61,11 @@ public class CombatManager : MonoBehaviour
             case CombatState.End:
                 break;
         }
-        
+    }
+
+    private bool AreAllEnemiesDead()
+    {
+        return GameObject.FindGameObjectWithTag("StickerEnemi") == null;
     }
 
     private int _nextWaveIndex;
@@ -58,6 +76,7 @@ public class CombatManager : MonoBehaviour
     public void SpawnNextWave()
     {
         _startWaveBtn.SetActive(false);
+        SetAllAlliesLocked(true);
         _state = CombatState.WaitingWave;
         
         if (_levelData == null || _EnemiesSpawns == null || _EnemiesSpawns.Length == 0)
@@ -144,6 +163,15 @@ public class CombatManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void SetAllAlliesLocked(bool locked)
+    {
+        StickerAlly[] allies = Object.FindObjectsByType<StickerAlly>(FindObjectsSortMode.None);
+        foreach (var ally in allies)
+        {
+            ally.IsLocked = locked;
+        }
     }
 }
 
