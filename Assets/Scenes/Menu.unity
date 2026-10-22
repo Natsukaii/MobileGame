@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474c439cf5e6514baba37a538cfa667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
-  _price: 20000
+  _price: 4
   _moneyType: 1
   _textSoldOut: {fileID: 514758780}
   _textMoney: {fileID: 119423611}
@@ -6233,7 +6233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474c439cf5e6514baba37a538cfa667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
-  _price: 20000
+  _price: 4
   _moneyType: 1
   _textSoldOut: {fileID: 2003243045}
   _textMoney: {fileID: 744095715}
@@ -6502,7 +6502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474c439cf5e6514baba37a538cfa667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
-  _price: 40000
+  _price: 7
   _moneyType: 1
   _textSoldOut: {fileID: 1712816212}
   _textMoney: {fileID: 1053050616}
@@ -6858,7 +6858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474c439cf5e6514baba37a538cfa667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
-  _price: 20000
+  _price: 4
   _moneyType: 1
   _textSoldOut: {fileID: 1823822029}
   _textMoney: {fileID: 1560831967}
@@ -8074,7 +8074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474c439cf5e6514baba37a538cfa667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
-  _price: 40000
+  _price: 7
   _moneyType: 1
   _textSoldOut: {fileID: 2121876015}
   _textMoney: {fileID: 421209513}
@@ -10945,7 +10945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474c439cf5e6514baba37a538cfa667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
-  _price: 40000
+  _price: 7
   _moneyType: 1
   _textSoldOut: {fileID: 1321625871}
   _textMoney: {fileID: 785587486}

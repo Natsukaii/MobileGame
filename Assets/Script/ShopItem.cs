@@ -24,18 +24,26 @@ public class ShopItem : MonoBehaviour
     
     public void BuyItem()
     {
-        if (_price <= FindAnyObjectByType<GameManager>().Money)
+        switch (_moneyType)
         {
-            if (_moneyType == MoneyType.normal)
-                FindAnyObjectByType<GameManager>().Money -= _price;
-            else
-                FindAnyObjectByType<GameManager>().MoneyPrenium -= _price;
-
-            GetComponent<Button>().interactable = false;
-            _textSoldOut.SetActive(true);
-            _textMoney.SetActive(false);
-            _buyEvent?.Invoke();
+            case MoneyType.normal:
+                if (_price <= FindAnyObjectByType<GameManager>().Money)
+                    FindAnyObjectByType<GameManager>().Money -= _price;
+                else
+                    return;
+                break;
+            case MoneyType.Prenium:
+                if (_price <= FindAnyObjectByType<GameManager>().MoneyPrenium)
+                    FindAnyObjectByType<GameManager>().MoneyPrenium -= _price;
+                else
+                    return;
+                break;
         }
+        
+        GetComponent<Button>().interactable = false;
+        _textSoldOut.SetActive(true);
+        _textMoney.SetActive(false);
+        _buyEvent?.Invoke();
     }
     
     public string FormatNumber(int number)
