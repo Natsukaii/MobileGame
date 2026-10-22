@@ -7,6 +7,39 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text _debugText;
     private string _currentSceneName = "";
+    
+    private MenuManager _menuManager;
+
+
+#region Money
+    [SerializeField] private int money;
+    [SerializeField] private int moneyPrenium;
+
+    public int Money
+    {
+        get => money;
+        set
+        {
+            money = value;
+            if (_menuManager ==null)
+                _menuManager = FindAnyObjectByType<MenuManager>();
+            _menuManager.UpdateMoneyText(money);
+        }
+    }
+
+    public int MoneyPrenium
+    {
+        get => moneyPrenium;
+        set
+        {
+            moneyPrenium = value;
+            if (_menuManager ==null)
+                _menuManager = FindAnyObjectByType<MenuManager>();
+            _menuManager.UpdateMoneyPreniumText(moneyPrenium);
+        }
+    }
+
+#endregion
 
     void Awake()
     {
@@ -16,6 +49,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         LoadLevel("Menu");
+        
+        
+        
     }
 
     void Update()

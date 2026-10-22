@@ -468,6 +468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   _debugText: {fileID: 878116018}
+  money: 1000000
+  moneyPrenium: 1000
 --- !u!4 &710611920
 Transform:
   m_ObjectHideFlags: 0

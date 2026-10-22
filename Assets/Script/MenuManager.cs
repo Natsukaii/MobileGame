@@ -1,11 +1,9 @@
 using TMPro;
 using UnityEngine;
+using System.Globalization;
 
 public class MenuManager : MonoBehaviour
 {
-    [Header("Debug")]
-    [SerializeField] private TMP_Text _debugText;
-    
     [Header("Camera")]
     [Tooltip("Positions monde de la camera, dans l'ordre de gauche a droite.")]
     [SerializeField] private Vector3[] _cameraPositions;
@@ -39,6 +37,45 @@ public class MenuManager : MonoBehaviour
         _slideStartPosition = mainCamera.transform.position;
         _slideElapsed = _slideDuration;
     }
+    
+    void Start()
+    {
+        GameManager manager = FindAnyObjectByType<GameManager>();
+        if (manager != null)
+        {
+            UpdateMoneyText(manager.Money);
+            UpdateMoneyPreniumText(manager.MoneyPrenium);
+        }
+    }
+
+#region Money
+    
+    [Header("Money Setting")]
+    [SerializeField] private TMP_Text _moneyText;
+    [SerializeField] private TMP_Text _moneyPreniumText;
+    
+    public void UpdateMoneyText(int money)
+    {
+        _moneyText.text = FormatNumber(money);
+    }
+
+    public void UpdateMoneyPreniumText(int money)
+    {
+        _moneyPreniumText.text = FormatNumber(money);
+    }
+    
+    public string FormatNumber(int number)
+    {
+        if (number >= 1_000_000)
+            return (number / 1_000_000f).ToString("0.#", CultureInfo.GetCultureInfo("fr-FR")) + "M";
+
+        if (number >= 1_000)
+            return (number / 1_000f).ToString("0.#", CultureInfo.GetCultureInfo("fr-FR")) + "k";
+
+        return number.ToString();
+    }
+
+#endregion
 
     private void OnEnable()
     {
@@ -126,7 +163,6 @@ public class MenuManager : MonoBehaviour
 
         if (levelData == null)
         {
-            _debugText.text = "Level data is null";
             return;
         }
 
