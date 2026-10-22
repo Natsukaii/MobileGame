@@ -668,6 +668,17 @@ MonoBehaviour:
     - {fileID: -8880576204738939792, guid: 461c0cf98f3694442be087bea4e8fc87, type: 3}
     - {fileID: 8226340397574926576, guid: 929ee64933cb2b94d8daf48e7a9efa4a, type: 3}
     - {fileID: 5809502882104345953, guid: 21ee08a5c354a4e4fba9b0654dbd22e7, type: 3}
+  - name: mort
+    framerate: 15
+    frames:
+    - {fileID: 8464202282911398084, guid: d69d31cc082ced64f8134697635197c3, type: 3}
+    - {fileID: 8464202282911398084, guid: d69d31cc082ced64f8134697635197c3, type: 3}
+    - {fileID: 8464202282911398084, guid: d69d31cc082ced64f8134697635197c3, type: 3}
+    - {fileID: 7418652272508035025, guid: 3d6ebd06eac93c14f817dbd3986f1991, type: 3}
+    - {fileID: -8147342089942282892, guid: 2a3d81df15a3b6a4fa697882fb1440e5, type: 3}
+    - {fileID: -8880576204738939792, guid: e6d03e2a64b1ab74785c580af9bf11f7, type: 3}
+    - {fileID: 8226340397574926576, guid: 4727153de945f8540a2efb5c205aa4a2, type: 3}
+    - {fileID: 5809502882104345953, guid: 977dda54f6df6ba4ca1b343cb0dcad74, type: 3}
   spriteRenderer: {fileID: 99517456}
 --- !u!212 &99517456
 SpriteRenderer:
@@ -8654,6 +8665,38 @@ PrefabInstance:
     - target: {fileID: 3591709876151820296, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 99517455}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VfxAnimator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: mort
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828022524770824935, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7073270283346075462, guid: 1c4db19b2e8e7454b8a8f377a7b423c7, type: 3}
       propertyPath: m_Name
