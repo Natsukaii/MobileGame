@@ -12,6 +12,13 @@ public class StickerAlly : MonoBehaviour, IHealth
     private bool _isLocked = false;
     private float _timer = 0f;
     
+    [SerializeField] private Transform spriteToShake;
+    [SerializeField] private float magnitude = 0.02f;
+    [SerializeField] private float smoothness = 10f;
+
+    private Vector3 originalPosition = new Vector3();
+    bool once = false;
+    
     public bool IsLocked
     {
         get => _isLocked;
@@ -34,12 +41,20 @@ public class StickerAlly : MonoBehaviour, IHealth
     private void Start()
     {
         IsLocked = _isLocked;
+        _timer = 0f;
     }
     
     private void Update()
     {
-        if (!_isLocked) 
+        if (!_isLocked)
+        {
+            Shake(true);
             return;
+        }
+        else
+        {
+            Shake(false);
+        }
         
         _timer += Time.deltaTime;
         if (_timer >= _recastAttaque)
@@ -57,6 +72,30 @@ public class StickerAlly : MonoBehaviour, IHealth
                 {
                     _vfxAnimator.PlayAnimation("Missile");
                 }
+            }
+        }
+    }
+
+    public void Shake(bool isShaking)
+    {
+        if (isShaking)
+        {
+            Vector2 offset = Random.insideUnitCircle * magnitude;
+
+            Vector3 targetPosition = originalPosition + new Vector3(offset.x, offset.y, 0f);
+
+            spriteToShake.localPosition = Vector3.Lerp(spriteToShake.localPosition, targetPosition, Time.deltaTime * smoothness);
+
+            once = false;
+        }
+        else if (!once)
+        {
+            spriteToShake.localPosition = Vector3.Lerp(spriteToShake.localPosition, originalPosition, Time.deltaTime * smoothness);
+
+            if (Vector3.Distance(spriteToShake.localPosition, originalPosition) < 0.001f)
+            {
+                spriteToShake.localPosition = originalPosition;
+                once = true;
             }
         }
     }
