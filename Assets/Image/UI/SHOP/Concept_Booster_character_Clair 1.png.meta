@@ -118,10 +118,10 @@ TextureImporter:
       name: Concept_Booster_character_Clair 1_0
       rect:
         serializedVersion: 2
-        x: 404
-        y: 231
-        width: 1124
-        height: 1431
+        x: 0
+        y: 0
+        width: 1122
+        height: 1429
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
