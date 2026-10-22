@@ -16,12 +16,18 @@ MonoBehaviour:
   - enemies:
     - prefab: {fileID: 1475041641008687646, guid: 431dff5ced531dd4b8bc01562c35427a, type: 3}
       count: 2
-      waveTime: 2
+    - prefab: {fileID: 1475041641008687646, guid: 91c22341c4fac994b990aa6f6a28e535, type: 3}
+      count: 1
+    waveTime: 3
   - enemies:
     - prefab: {fileID: 1475041641008687646, guid: 431dff5ced531dd4b8bc01562c35427a, type: 3}
       count: 5
-      waveTime: 4
+    - prefab: {fileID: 1475041641008687646, guid: 91c22341c4fac994b990aa6f6a28e535, type: 3}
+      count: 2
+    waveTime: 5
   - enemies:
     - prefab: {fileID: 1475041641008687646, guid: 431dff5ced531dd4b8bc01562c35427a, type: 3}
       count: 7
-      waveTime: 6
+    - prefab: {fileID: 1475041641008687646, guid: 91c22341c4fac994b990aa6f6a28e535, type: 3}
+      count: 4
+    waveTime: 7

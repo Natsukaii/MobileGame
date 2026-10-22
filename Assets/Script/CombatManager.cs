@@ -11,16 +11,18 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private Transform[] _EnemiesSpawns;
     [SerializeField] private LevelData _levelData;
     [SerializeField] private float _timeBetweenWaves = 10;
+    [SerializeField] private GameObject _startWaveBtn;
 
     private CombatState _state;
     private float _timer;
     private float _timeToWait;
 
-    private void Start()
+    public void StartCombat(LevelData levelData)
     {
-        SpawnNextWave();
+        _levelData = levelData;
+        _state = CombatState.Preparing;
+        _timer = 0;
     }
-
     
     private void Update()
     {
@@ -30,37 +32,52 @@ public class CombatManager : MonoBehaviour
         switch (_state)
         {
             case CombatState.Preparing:
-                break;
-            
-            case CombatState.WaitingtWave:
-                if (_timer >= _timeBetweenWaves)
+                if (AreAllEnemiesDead())
                 {
-                    _timer = 0;
-                    _state = CombatState.WaitingForNextWave;
+                    if (!_startWaveBtn.activeSelf)
+                    {
+                        _startWaveBtn.SetActive(true);
+                        SetAllAlliesLocked(false);
+                    }
+                }
+                else
+                {
+                    if (_startWaveBtn.activeSelf)
+                    {
+                        _startWaveBtn.SetActive(false);
+                        SetAllAlliesLocked(true);
+                    }
                 }
                 break;
             
-            case CombatState.WaitingForNextWave:
+            case CombatState.WaitingWave:
                 if (_timer >= _timeBetweenWaves)
                 {
                     _timer = 0;
-                    SpawnNextWave();
+                    _state = CombatState.Preparing;
                 }
                 break;
             
             case CombatState.End:
                 break;
         }
-        
+    }
+
+    private bool AreAllEnemiesDead()
+    {
+        return GameObject.FindGameObjectWithTag("StickerEnemi") == null;
     }
 
     private int _nextWaveIndex;
     private int _nextSpawnIndex;
     private int _spawnFrame = -1;
     private int _spawnsThisFrame;
+    private float _wavetime;
     public void SpawnNextWave()
     {
-        _state = CombatState.WaitingtWave;
+        _startWaveBtn.SetActive(false);
+        SetAllAlliesLocked(true);
+        _state = CombatState.WaitingWave;
         
         if (_levelData == null || _EnemiesSpawns == null || _EnemiesSpawns.Length == 0)
             return;
@@ -73,7 +90,7 @@ public class CombatManager : MonoBehaviour
         }
 
         WaveData wave = _levelData.waves[_nextWaveIndex];
-
+        _wavetime = wave.waveTime;
         foreach (EnemyGroup group in wave.enemies)
         {
             if (group.prefab == null)
@@ -91,7 +108,7 @@ public class CombatManager : MonoBehaviour
             yield break;
 
         float[] spawnTimes = new float[group.count];
-        float duration = Mathf.Max(0f, group.waveTime);
+        float duration = Mathf.Max(0f, _wavetime);
         int scheduled = 0;
         while (scheduled < group.count)
         {
@@ -147,12 +164,20 @@ public class CombatManager : MonoBehaviour
 
         return null;
     }
+
+    private void SetAllAlliesLocked(bool locked)
+    {
+        StickerAlly[] allies = Object.FindObjectsByType<StickerAlly>(FindObjectsSortMode.None);
+        foreach (var ally in allies)
+        {
+            ally.IsLocked = locked;
+        }
+    }
 }
 
 enum CombatState
 {
     Preparing,
-    WaitingtWave,
-    WaitingForNextWave,
+    WaitingWave,
     End
 }
