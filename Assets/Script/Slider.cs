@@ -63,6 +63,7 @@ public class Slider : MonoBehaviour, ITouch
         return nearest;
     }
     
+    
     public void OnTouchStart(Vector3 position)
     {
         delta = transform.position.x - position.x;

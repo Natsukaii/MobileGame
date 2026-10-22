@@ -54,7 +54,7 @@ public class StickerToSlider : MonoBehaviour , ITouch
                 currentSnapPoint = snap;
                 currentSlider = nearestSlider;
                 transform.SetParent(snap);
-                transform.localPosition = Vector3.zero;
+                transform.localPosition = new Vector3(0,0,-1);
             }
         }
     }

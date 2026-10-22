@@ -12,6 +12,8 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private LevelData _levelData;
     [SerializeField] private float _timeBetweenWaves = 10;
     [SerializeField] private GameObject _startWaveBtn;
+    [SerializeField] private GameObject _victoryPanel;
+    [SerializeField] private GameObject _defeatPanel;
 
     private CombatState _state;
     private float _timer;
@@ -26,13 +28,16 @@ public class CombatManager : MonoBehaviour
     
     private void Update()
     {
-        _debugText.text = _state.ToString();
         _timer += Time.deltaTime;
         
         switch (_state)
         {
             case CombatState.Preparing:
-                if (AreAllEnemiesDead())
+                // Le bouton ne doit être visible que si aucune vague n'est en cours 
+                // ET qu'il reste des vagues à lancer.
+                bool hasMoreWaves = _levelData != null && _nextWaveIndex < _levelData.waves.Count;
+                
+                if (AreAllEnemiesDead() && hasMoreWaves)
                 {
                     if (!_startWaveBtn.activeSelf)
                     {
@@ -40,21 +45,22 @@ public class CombatManager : MonoBehaviour
                         SetAllAlliesLocked(false);
                     }
                 }
-                else
+                else if (!hasMoreWaves)
                 {
                     if (_startWaveBtn.activeSelf)
-                    {
                         _startWaveBtn.SetActive(false);
-                        SetAllAlliesLocked(true);
+                    
+                    if (AreAllEnemiesDead())
+                    {
+                        Win();
                     }
                 }
                 break;
             
             case CombatState.WaitingWave:
-                if (_timer >= _timeBetweenWaves)
+                if (_enemiesToSpawn <= 0 && AreAllEnemiesDead())
                 {
-                    _timer = 0;
-                    _state = CombatState.Preparing;
+                     _state = CombatState.Preparing;
                 }
                 break;
             
@@ -73,8 +79,15 @@ public class CombatManager : MonoBehaviour
     private int _spawnFrame = -1;
     private int _spawnsThisFrame;
     private float _wavetime;
+    private int _enemiesToSpawn;
+    
     public void SpawnNextWave()
     {
+        if (!AreAllAlliesPlaced())
+        {
+            return;
+        }
+
         _startWaveBtn.SetActive(false);
         SetAllAlliesLocked(true);
         _state = CombatState.WaitingWave;
@@ -91,11 +104,13 @@ public class CombatManager : MonoBehaviour
 
         WaveData wave = _levelData.waves[_nextWaveIndex];
         _wavetime = wave.waveTime;
+        _enemiesToSpawn = 0;
         foreach (EnemyGroup group in wave.enemies)
         {
             if (group.prefab == null)
                 continue;
 
+            _enemiesToSpawn += group.count;
             StartCoroutine(SpawnGroup(group));
         }
 
@@ -145,6 +160,7 @@ public class CombatManager : MonoBehaviour
             if (spawn != null)
             {
                 _spawnsThisFrame++;
+                _enemiesToSpawn--;
                 Instantiate(group.prefab, spawn.position, spawn.rotation);
             }
         }
@@ -172,6 +188,41 @@ public class CombatManager : MonoBehaviour
         {
             ally.IsLocked = locked;
         }
+    }
+
+    private bool AreAllAlliesPlaced()
+    {
+        StickerAlly[] allies = Object.FindObjectsByType<StickerAlly>(FindObjectsSortMode.None);
+        foreach (var ally in allies)
+        {
+            // Si le sticker n'a pas de parent, il n'est pas sur un slider
+            if (ally.transform.parent == null) return false;
+        }
+        return true;
+    }
+
+    public void OnPlayerDeath()
+    {
+        if (_state == CombatState.End) return;
+        
+        _state = CombatState.End;
+        _debugText.text = "Défaite !";
+        if (_defeatPanel != null) _defeatPanel.SetActive(true);
+        //Time.timeScale = 0; 
+    }
+
+    private void Win()
+    {
+        if (_state == CombatState.End) return;
+
+        _state = CombatState.End;
+        if (_victoryPanel != null) _victoryPanel.SetActive(true);
+        // Time.timeScale = 0;
+    }
+
+    public void ButtonWinLose(bool isWin)
+    {
+        FindAnyObjectByType<GameManager>().IsWin(isWin);
     }
 }
 

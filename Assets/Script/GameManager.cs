@@ -5,8 +5,42 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _debugText;
     private string _currentSceneName = "";
+    
+    private MenuManager _menuManager;
+    private LevelData _levelData;
+
+#region Money
+    [SerializeField] private int money;
+    [SerializeField] private int moneyPrenium;
+
+    public int Money
+    {
+        get => money;
+        set
+        {
+            money = value;
+            if (_menuManager ==null)
+                _menuManager = FindAnyObjectByType<MenuManager>();
+            if (_menuManager != null)
+                _menuManager.UpdateMoneyText(money);
+        }
+    }
+
+    public int MoneyPrenium
+    {
+        get => moneyPrenium;
+        set
+        {
+            moneyPrenium = value;
+            if (_menuManager ==null)
+                _menuManager = FindAnyObjectByType<MenuManager>();
+            if (_menuManager != null)
+                _menuManager.UpdateMoneyPreniumText(moneyPrenium);
+        }
+    }
+
+#endregion
 
     void Awake()
     {
@@ -16,6 +50,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         LoadLevel("Menu");
+        
+        
+        
     }
 
     void Update()
@@ -28,9 +65,14 @@ public class GameManager : MonoBehaviour
         if (_currentSceneName != "")
             SceneManager.UnloadSceneAsync(_currentSceneName);
         _currentSceneName = sceneName;
+        Time.timeScale = 1;
+        _levelData = levelData;
         StartCoroutine(LoadSceneCoroutine(sceneName, levelData));
     }
-
+    public void UnloadLevel(string sceneName)
+    {
+        SceneManager.UnloadSceneAsync(sceneName);
+    }
     
     IEnumerator LoadSceneCoroutine(string sceneName, LevelData levelData) 
     {
@@ -46,6 +88,19 @@ public class GameManager : MonoBehaviour
         {
             FindAnyObjectByType<CombatManager>().StartCombat(levelData);
         }
-        _debugText.text = "Scène chargée !";
+    }
+
+    public void IsWin(bool isWin)
+    {
+        if (isWin)
+        {
+            Money += _levelData.MoneyToWin;
+        }
+        else
+        {
+            
+        }
+        UnloadLevel(_currentSceneName);
+        LoadLevel("Menu");
     }
 }
