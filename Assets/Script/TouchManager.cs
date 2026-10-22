@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class TouchManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _debugText;
     [SerializeField] private UnityEvent<Vector3> _onTouchPosition;
     private GameObject _objectTouched;
     
@@ -57,7 +56,6 @@ public class TouchManager : MonoBehaviour
             if (_objectTouched != null)
             {
                 _objectTouched.GetComponent<ITouch>()?.OnTouchContinue(touchPosition);
-                _debugText.text = touchPosition + " " + _objectTouched.name;
             }
         }
     }
@@ -87,10 +85,7 @@ public class TouchManager : MonoBehaviour
         {
             _touchedObject = _objectTouched.GetComponent<ITouch>();
             _touchedObject?.OnTouchStart(mousePosition);
-            if (_touchedObject == null)
-                Debug.Log("No ITouch on " + _objectTouched.name + "");
             
-            _debugText.text = mousePosition + " " + _objectTouched.name;
         }
         else
         {

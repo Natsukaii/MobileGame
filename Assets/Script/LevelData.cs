@@ -7,6 +7,7 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     public List<WaveData> waves = new List<WaveData>();
+    public int MoneyToWin = 0;
 }
 
 [Serializable]
