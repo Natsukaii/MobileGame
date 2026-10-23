@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aeee0e28e5d2234ab3e19c3fd497921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerAlly
-  _life: 10
+  _life: 5
   _recastAttaque: 1.5
   _missil: {fileID: 1180954165294804120, guid: 7db401fa380b58e46ba6ae7f0345b90a, type: 3}
   damage: 1

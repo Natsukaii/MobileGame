@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -83,9 +83,13 @@ public class GameManager : MonoBehaviour
         LoadLevel("Menu");
     }
 
-    void Update()
+    public void ResetGameData()
     {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
         
+        UnloadLevel(_currentSceneName);
+        SceneManager.LoadScene("Main");
     }
     
     public void LoadLevel(string sceneName, LevelData levelData = null, int levelIndex = -1)
@@ -127,7 +131,10 @@ public class GameManager : MonoBehaviour
 
         if (levelData != null)
         {
-            FindAnyObjectByType<CombatManager>().StartCombat(levelData);
+            if (levelData.LevelIndex == 0)
+                FindAnyObjectByType<CombatManager>().StartCombat(levelData, true);
+            else
+                FindAnyObjectByType<CombatManager>().StartCombat(levelData);
         }
     }
 

@@ -16,16 +16,23 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private VfxAnimatorUI _vfxAnimator;
     [SerializeField] private GameObject _defeatPanel;
     [SerializeField] private Transform[] _allySpawnPositions;
+    
+    [SerializeField] private GameObject _tutorialPanel;
 
     private CombatState _state;
     private float _timer;
     private float _timeToWait;
 
-    public void StartCombat(LevelData levelData)
+    public void StartCombat(LevelData levelData, bool isTutorial = false)
     {
         _levelData = levelData;
         _state = CombatState.Preparing;
         _timer = 0;
+        
+        if (isTutorial)
+        {
+            _tutorialPanel.SetActive(true);
+        }
     }
 
     
@@ -205,7 +212,6 @@ public class CombatManager : MonoBehaviour
         if (_state == CombatState.End) return;
         
         _state = CombatState.End;
-        _debugText.text = "Défaite !";
         if (_defeatPanel != null) _defeatPanel.SetActive(true);
         //Time.timeScale = 0; 
     }
@@ -220,7 +226,6 @@ public class CombatManager : MonoBehaviour
             _victoryPanel.SetActive(true);
             _vfxAnimator.PlayAnimation("Win");
         }
-        Debug.Log("Victoire !");
         // Time.timeScale = 0;
     }
 

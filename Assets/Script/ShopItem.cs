@@ -7,10 +7,12 @@ using UnityEngine.UI;
 
 public class ShopItem : MonoBehaviour
 {
-    [SerializeField] private int _price;
+    [SerializeField] private float _price;
     [SerializeField] private MoneyType _moneyType;
-    [FormerlySerializedAs("_text")] [SerializeField] private GameObject _textSoldOut;
-    [FormerlySerializedAs("_text")] [SerializeField] private GameObject _textMoney;
+    [SerializeField] private MoneyType _moneyToBuy;
+    [SerializeField] private int _getPrice;
+    [SerializeField] private GameObject _textSoldOut;
+    [SerializeField] private GameObject _textMoney;
     [SerializeField] private TMP_Text _textPrice;
     
     [SerializeField] private UnityEvent _buyEvent;
@@ -19,7 +21,14 @@ public class ShopItem : MonoBehaviour
     {
         _textSoldOut.SetActive(false);
         _textMoney.SetActive(true);
-        _textPrice.text = FormatNumber(_price);
+        if (_moneyType == MoneyType.real)
+        {
+            _textPrice.text = _price + " €";
+        }
+        else
+        {
+            _textPrice.text = FormatNumber((int)_price);
+        }
     }
     
     public void BuyItem()
@@ -28,7 +37,7 @@ public class ShopItem : MonoBehaviour
         {
             case MoneyType.normal:
                 if (_price <= FindAnyObjectByType<GameManager>().Money)
-                    FindAnyObjectByType<GameManager>().Money -= _price;
+                    FindAnyObjectByType<GameManager>().Money -= (int)_price;
                 else
                 {
                     FindAnyObjectByType<MenuManager>()?.GoToPosition(4);
@@ -37,12 +46,27 @@ public class ShopItem : MonoBehaviour
                 break;
             case MoneyType.Prenium:
                 if (_price <= FindAnyObjectByType<GameManager>().MoneyPrenium)
-                    FindAnyObjectByType<GameManager>().MoneyPrenium -= _price;
+                    FindAnyObjectByType<GameManager>().MoneyPrenium -= (int)_price;
                 else
                 {
                     FindAnyObjectByType<MenuManager>()?.GoToPosition(4);
                     return;
                 }
+                break;
+            case MoneyType.real:
+                if (_moneyToBuy != MoneyType.normal)
+                {
+                    int m = FindAnyObjectByType<GameManager>().Money + _getPrice;
+                    if (m != null)
+                        FindAnyObjectByType<GameManager>().Money = m;
+                }
+                else if (_moneyToBuy != MoneyType.Prenium)
+                {
+                    int m = FindAnyObjectByType<GameManager>().MoneyPrenium + _getPrice;
+                    if (m != null)
+                        FindAnyObjectByType<GameManager>().MoneyPrenium = m;
+                }
+                
                 break;
         }
         
@@ -67,5 +91,6 @@ public class ShopItem : MonoBehaviour
 enum MoneyType
 {
     normal,
-    Prenium
+    Prenium,
+    real
 }

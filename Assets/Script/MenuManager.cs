@@ -62,10 +62,7 @@ public class MenuManager : MonoBehaviour
             {
                 _levelButtons[i].interactable = (i <= unlockedIndex);
                 
-                // On attache dynamiquement l'index au bouton pour éviter les erreurs de configuration manuelle
                 int index = i;
-                // Note: Il peut être nécessaire de nettoyer les listeners existants si cette méthode est appelée plusieurs fois
-                // Mais comme c'est souvent au Start ou au changement de menu, c'est acceptable ici.
             }
         }
     }
@@ -103,10 +100,7 @@ public class MenuManager : MonoBehaviour
     {
         _touchManager = FindAnyObjectByType<TouchManager>();
         if (_touchManager == null)
-        {
-            Debug.LogWarning("MenuManager : TouchManager introuvable. Lance le jeu depuis Main.", this);
             return;
-        }
 
         _touchManager.OnTouchStart.AddListener(OnTouchStart);
         _touchManager.OnTouchEnd.AddListener(OnTouchEnd);
@@ -198,5 +192,13 @@ public class MenuManager : MonoBehaviour
             GameManager.Instance.LoadLevel("game", levelData, index);
         else
             FindAnyObjectByType<GameManager>().LoadLevel("game", levelData, index);
+    }
+    
+    public void resetGameData()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.ResetGameData();
+        else
+            FindAnyObjectByType<GameManager>()?.ResetGameData();
     }
 }
