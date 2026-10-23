@@ -8,6 +8,7 @@ public class StickerAlly : MonoBehaviour, IHealth
     [SerializeField] private float damage = 1;
     
     [SerializeField] private VfxAnimator _vfxAnimator;
+    [SerializeField] private GameObject _deathAnimation;
     
     private bool _isLocked = false;
     private float _timer = 0f;
@@ -34,6 +35,7 @@ public class StickerAlly : MonoBehaviour, IHealth
         _life -= damage;
         if (_life <= 0)
         {
+            Instantiate(_deathAnimation, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

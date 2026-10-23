@@ -10,6 +10,7 @@ public class Enemie : MonoBehaviour , IHealth
     [SerializeField] private bool isRange;
     [SerializeField] private GameObject _missil;
     [SerializeField] private VfxAnimator _vfxAnimator;
+    [SerializeField] private GameObject _deathAnimation;
     
     private float Timer = 0f;
     private Collider2D _collider;
@@ -128,6 +129,7 @@ public class Enemie : MonoBehaviour , IHealth
         life -= damageAmount;
         if (life <= 0)
         {
+            Instantiate(_deathAnimation, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

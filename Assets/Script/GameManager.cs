@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
         
         UnloadLevel(_currentSceneName);
         SceneManager.LoadScene("Main");
+        LoadLevel("Menu");
     }
     
     public void LoadLevel(string sceneName, LevelData levelData = null, int levelIndex = -1)

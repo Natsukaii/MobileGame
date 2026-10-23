@@ -275,6 +275,7 @@ MonoBehaviour:
   _missil: {fileID: 1180954165294804120, guid: 7db401fa380b58e46ba6ae7f0345b90a, type: 3}
   damage: 1
   _vfxAnimator: {fileID: 8382389661979420961}
+  _deathAnimation: {fileID: 2971473207444519910, guid: 1839def6119da5f44bea6a67b645ba0a, type: 3}
   spriteToShake: {fileID: 5312215790209630928}
   magnitude: 1.1
   smoothness: 0.7

@@ -1115,6 +1115,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1802988204}
+        m_TargetAssemblyTypeName: VfxAnimatorUI, Assembly-CSharp
+        m_MethodName: SetSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5809502882104345953, guid: 21ee08a5c354a4e4fba9b0654dbd22e7, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &97955650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4774,6 +4786,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1802988204}
+        m_TargetAssemblyTypeName: VfxAnimatorUI, Assembly-CSharp
+        m_MethodName: SetSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5809502882104345953, guid: 21ee08a5c354a4e4fba9b0654dbd22e7, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &418652817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8375,6 +8399,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1802988204}
+        m_TargetAssemblyTypeName: VfxAnimatorUI, Assembly-CSharp
+        m_MethodName: SetSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5809502882104345953, guid: 21ee08a5c354a4e4fba9b0654dbd22e7, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16893,6 +16929,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1802988204}
+        m_TargetAssemblyTypeName: VfxAnimatorUI, Assembly-CSharp
+        m_MethodName: SetSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5809502882104345953, guid: 21ee08a5c354a4e4fba9b0654dbd22e7, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1735508993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17901,12 +17949,6 @@ MonoBehaviour:
     - {fileID: -2755791315306370890, guid: 4d3ac48662c0b2a4b9639c99eb567aa0, type: 3}
     - {fileID: 511895092273072963, guid: 4dbaa2f768a69024b93968bde09af82e, type: 3}
     - {fileID: -3838872651087377694, guid: a557a991feb4f754b95e86beb958235d, type: 3}
-    - {fileID: 511895092273072963, guid: 4dbaa2f768a69024b93968bde09af82e, type: 3}
-    - {fileID: -2755791315306370890, guid: 4d3ac48662c0b2a4b9639c99eb567aa0, type: 3}
-    - {fileID: -8190987264080653300, guid: d701bd5a61b5e1348b878467782a92b8, type: 3}
-    - {fileID: -8122200272424534979, guid: e5f277cdc02e97543b77d3e262c3bff3, type: 3}
-    - {fileID: 2904117306961723034, guid: 4a498f3b552b38346b8018dc7cd312de, type: 3}
-    - {fileID: 5809502882104345953, guid: 21ee08a5c354a4e4fba9b0654dbd22e7, type: 3}
   image: {fileID: 1802006712}
 --- !u!1001 &1810402821
 PrefabInstance:
@@ -18808,6 +18850,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1802988204}
+        m_TargetAssemblyTypeName: VfxAnimatorUI, Assembly-CSharp
+        m_MethodName: SetSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5809502882104345953, guid: 21ee08a5c354a4e4fba9b0654dbd22e7, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1911779712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18972,6 +19026,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1802988204}
+        m_TargetAssemblyTypeName: VfxAnimatorUI, Assembly-CSharp
+        m_MethodName: SetSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5809502882104345953, guid: 21ee08a5c354a4e4fba9b0654dbd22e7, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

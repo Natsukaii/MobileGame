@@ -16,14 +16,18 @@ MonoBehaviour:
   waves:
   - enemies:
     - prefab: {fileID: 1475041641008687646, guid: 431dff5ced531dd4b8bc01562c35427a, type: 3}
-      count: 6
+      count: 9
     waveTime: 3
   - enemies:
     - prefab: {fileID: 1475041641008687646, guid: 431dff5ced531dd4b8bc01562c35427a, type: 3}
+      count: 15
+    - prefab: {fileID: 1475041641008687646, guid: 91c22341c4fac994b990aa6f6a28e535, type: 3}
       count: 10
-    waveTime: 3
+    waveTime: 10
   - enemies:
     - prefab: {fileID: 1475041641008687646, guid: 431dff5ced531dd4b8bc01562c35427a, type: 3}
-      count: 20
-    waveTime: 3
+      count: 25
+    - prefab: {fileID: 1475041641008687646, guid: 91c22341c4fac994b990aa6f6a28e535, type: 3}
+      count: 15
+    waveTime: 25
   MoneyToWin: 10000

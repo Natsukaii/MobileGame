@@ -54,6 +54,7 @@ MonoBehaviour:
   isRange: 1
   _missil: {fileID: 1180954165294804120, guid: 384ed855ef8ef34479764be29b3eb087, type: 3}
   _vfxAnimator: {fileID: 2271462699930330925}
+  _deathAnimation: {fileID: 2971473207444519910, guid: 1839def6119da5f44bea6a67b645ba0a, type: 3}
 --- !u!212 &231615585752399047
 SpriteRenderer:
   serializedVersion: 3
@@ -152,7 +153,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.86777776, y: 0.68333334}
+    oldSize: {x: 0.8221053, y: 0.64736843}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

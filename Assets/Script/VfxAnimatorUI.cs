@@ -47,4 +47,10 @@ public class VfxAnimatorUI : MonoBehaviour
             timeSinceLastFrame = 0f;
         }
     }
+    
+    public void SetSprite(Sprite sprite)
+    {
+        image.sprite = sprite;
+    }
+
 }
