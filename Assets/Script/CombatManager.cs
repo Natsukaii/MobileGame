@@ -13,7 +13,9 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private float _timeBetweenWaves = 10;
     [SerializeField] private GameObject _startWaveBtn;
     [SerializeField] private GameObject _victoryPanel;
+    [SerializeField] private VfxAnimatorUI _vfxAnimator;
     [SerializeField] private GameObject _defeatPanel;
+    [SerializeField] private Transform[] _allySpawnPositions;
 
     private CombatState _state;
     private float _timer;
@@ -25,6 +27,7 @@ public class CombatManager : MonoBehaviour
         _state = CombatState.Preparing;
         _timer = 0;
     }
+
     
     private void Update()
     {
@@ -33,8 +36,6 @@ public class CombatManager : MonoBehaviour
         switch (_state)
         {
             case CombatState.Preparing:
-                // Le bouton ne doit être visible que si aucune vague n'est en cours 
-                // ET qu'il reste des vagues à lancer.
                 bool hasMoreWaves = _levelData != null && _nextWaveIndex < _levelData.waves.Count;
                 
                 if (AreAllEnemiesDead() && hasMoreWaves)
@@ -97,7 +98,6 @@ public class CombatManager : MonoBehaviour
 
         if (_nextWaveIndex >= _levelData.waves.Count)
         {
-            _debugText.text = "Toutes les vagues ont été lancées.";
             _state = CombatState.End;
             return;
         }
@@ -195,7 +195,6 @@ public class CombatManager : MonoBehaviour
         StickerAlly[] allies = Object.FindObjectsByType<StickerAlly>(FindObjectsSortMode.None);
         foreach (var ally in allies)
         {
-            // Si le sticker n'a pas de parent, il n'est pas sur un slider
             if (ally.transform.parent == null) return false;
         }
         return true;
@@ -216,13 +215,21 @@ public class CombatManager : MonoBehaviour
         if (_state == CombatState.End) return;
 
         _state = CombatState.End;
-        if (_victoryPanel != null) _victoryPanel.SetActive(true);
+        if (_victoryPanel != null)
+        {
+            _victoryPanel.SetActive(true);
+            _vfxAnimator.PlayAnimation("Win");
+        }
+        Debug.Log("Victoire !");
         // Time.timeScale = 0;
     }
 
     public void ButtonWinLose(bool isWin)
     {
-        FindAnyObjectByType<GameManager>().IsWin(isWin);
+        if (GameManager.Instance != null)
+            GameManager.Instance.IsWin(isWin);
+        else
+            FindAnyObjectByType<GameManager>().IsWin(isWin);
     }
 }
 

@@ -118,10 +118,10 @@ TextureImporter:
       name: Concept_Booster_Haut_0
       rect:
         serializedVersion: 2
-        x: 404
-        y: 1676
-        width: 1123
-        height: 86
+        x: 0
+        y: 0
+        width: 1121
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

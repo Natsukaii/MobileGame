@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e230c164e12df4a9d6125f591a0556, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  LevelIndex: 0
   waves:
   - enemies:
     - prefab: {fileID: 1475041641008687646, guid: 431dff5ced531dd4b8bc01562c35427a, type: 3}
@@ -31,3 +32,4 @@ MonoBehaviour:
     - prefab: {fileID: 1475041641008687646, guid: 91c22341c4fac994b990aa6f6a28e535, type: 3}
       count: 4
     waveTime: 7
+  MoneyToWin: 10000

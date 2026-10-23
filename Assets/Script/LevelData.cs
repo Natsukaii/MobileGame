@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LevelData", menuName = "MobileGame/LevelData")]
 public class LevelData : ScriptableObject
 {
+    public int LevelIndex;
     public List<WaveData> waves = new List<WaveData>();
     public int MoneyToWin = 0;
 }

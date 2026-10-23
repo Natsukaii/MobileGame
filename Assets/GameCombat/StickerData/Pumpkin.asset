@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32cddccc9624c649b472f2f74894c23, type: 3}
+  m_Name: Pumpkin
+  m_EditorClassIdentifier: Assembly-CSharp::StickerData
+  id: 3
+  stickerName: Pumpkin
+  icon: {fileID: 3496132361192248813, guid: 1cbd4f9c5be93f0459b08f9503478262, type: 3}
+  prefab: {fileID: 8024966987590158427, guid: 1d0afbae0635a89459aaf7806220eb4e, type: 3}
+  description: 

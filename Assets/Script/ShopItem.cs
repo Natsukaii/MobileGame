@@ -30,13 +30,19 @@ public class ShopItem : MonoBehaviour
                 if (_price <= FindAnyObjectByType<GameManager>().Money)
                     FindAnyObjectByType<GameManager>().Money -= _price;
                 else
+                {
+                    FindAnyObjectByType<MenuManager>()?.GoToPosition(4);
                     return;
+                }
                 break;
             case MoneyType.Prenium:
                 if (_price <= FindAnyObjectByType<GameManager>().MoneyPrenium)
                     FindAnyObjectByType<GameManager>().MoneyPrenium -= _price;
                 else
+                {
+                    FindAnyObjectByType<MenuManager>()?.GoToPosition(4);
                     return;
+                }
                 break;
         }
         

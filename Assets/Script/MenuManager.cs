@@ -1,9 +1,12 @@
 using TMPro;
 using UnityEngine;
 using System.Globalization;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    [Header("Levels")]
+    [SerializeField] private Button[] _levelButtons;
     [Header("Camera")]
     [Tooltip("Positions monde de la camera, dans l'ordre de gauche a droite.")]
     [SerializeField] private Vector3[] _cameraPositions;
@@ -40,11 +43,30 @@ public class MenuManager : MonoBehaviour
     
     void Start()
     {
-        GameManager manager = FindAnyObjectByType<GameManager>();
+        GameManager manager = GameManager.Instance != null ? GameManager.Instance : FindAnyObjectByType<GameManager>();
         if (manager != null)
         {
             UpdateMoneyText(manager.Money);
             UpdateMoneyPreniumText(manager.MoneyPrenium);
+            UpdateLevelButtons(manager.UnlockedLevelIndex);
+        }
+    }
+
+    public void UpdateLevelButtons(int unlockedIndex)
+    {
+        if (_levelButtons == null) return;
+        
+        for (int i = 0; i < _levelButtons.Length; i++)
+        {
+            if (_levelButtons[i] != null)
+            {
+                _levelButtons[i].interactable = (i <= unlockedIndex);
+                
+                // On attache dynamiquement l'index au bouton pour éviter les erreurs de configuration manuelle
+                int index = i;
+                // Note: Il peut être nécessaire de nettoyer les listeners existants si cette méthode est appelée plusieurs fois
+                // Mais comme c'est souvent au Start ou au changement de menu, c'est acceptable ici.
+            }
         }
     }
 
@@ -158,6 +180,12 @@ public class MenuManager : MonoBehaviour
     
     public void loadLevel(LevelData levelData)
     {
+        if (levelData == null) return;
+        loadLevelWithIndex(levelData, levelData.LevelIndex);
+    }
+
+    public void loadLevelWithIndex(LevelData levelData, int index)
+    {
         if (_isTouching)
             return;
 
@@ -166,5 +194,9 @@ public class MenuManager : MonoBehaviour
             return;
         }
 
-        FindAnyObjectByType<GameManager>().LoadLevel("game", levelData);
-    }}
+        if (GameManager.Instance != null)
+            GameManager.Instance.LoadLevel("game", levelData, index);
+        else
+            FindAnyObjectByType<GameManager>().LoadLevel("game", levelData, index);
+    }
+}

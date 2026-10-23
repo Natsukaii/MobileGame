@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,28 @@ public class GameManager : MonoBehaviour
     
     private MenuManager _menuManager;
     private LevelData _levelData;
+    private int _currentLevelIndex;
+    
+    public static GameManager Instance { get; private set; }
+
+    private const string UNLOCKED_LEVEL_KEY = "UnlockedLevelIndex";
+    private const string DECK_KEY = "PlayerDeck";
+    private const string INVENTORY_KEY = "PlayerInventory";
+
+
+    public int UnlockedLevelIndex
+    {
+        get
+        {
+            int val = PlayerPrefs.GetInt(UNLOCKED_LEVEL_KEY, 0);
+            return val;
+        }
+        set
+        {
+            PlayerPrefs.SetInt(UNLOCKED_LEVEL_KEY, value);
+            PlayerPrefs.Save();
+        }
+    }
 
 #region Money
     [SerializeField] private int money;
@@ -44,15 +67,20 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        
         Application.targetFrameRate = 120;
     }
     
     void Start()
     {
         LoadLevel("Menu");
-        
-        
-        
     }
 
     void Update()
@@ -60,13 +88,26 @@ public class GameManager : MonoBehaviour
         
     }
     
-    public void LoadLevel(string sceneName, LevelData levelData = null)
+    public void LoadLevel(string sceneName, LevelData levelData = null, int levelIndex = -1)
     {
-        if (_currentSceneName != "")
-            SceneManager.UnloadSceneAsync(_currentSceneName);
+        
+        if (_currentSceneName != "" && _currentSceneName != sceneName)
+        {
+            try {
+                SceneManager.UnloadSceneAsync(_currentSceneName);
+            } catch (System.Exception e) {
+            }
+        }
+            
         _currentSceneName = sceneName;
         Time.timeScale = 1;
         _levelData = levelData;
+        
+        if (levelIndex == -1 && levelData != null)
+            _currentLevelIndex = levelData.LevelIndex;
+        else
+            _currentLevelIndex = levelIndex;
+            
         StartCoroutine(LoadSceneCoroutine(sceneName, levelData));
     }
     public void UnloadLevel(string sceneName)
@@ -94,7 +135,13 @@ public class GameManager : MonoBehaviour
     {
         if (isWin)
         {
-            Money += _levelData.MoneyToWin;
+            if (_levelData != null)
+                Money += _levelData.MoneyToWin;
+            
+            if (_currentLevelIndex != -1 && _currentLevelIndex >= UnlockedLevelIndex)
+            {
+                UnlockedLevelIndex = _currentLevelIndex + 1;
+            }
         }
         else
         {

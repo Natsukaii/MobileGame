@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32cddccc9624c649b472f2f74894c23, type: 3}
+  m_Name: Cat
+  m_EditorClassIdentifier: Assembly-CSharp::StickerData
+  id: 0
+  stickerName: Cat
+  icon: {fileID: 5247792659623316158, guid: 89cf8a6fdebc7e849a922c0415cc6127, type: 3}
+  prefab: {fileID: 8024966987590158427, guid: 778264f5864e74545bdc959463c7378d, type: 3}
+  description: 

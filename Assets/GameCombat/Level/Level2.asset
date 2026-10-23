@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e230c164e12df4a9d6125f591a0556, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  LevelIndex: 1
   waves:
   - enemies:
     - prefab: {fileID: 1475041641008687646, guid: 431dff5ced531dd4b8bc01562c35427a, type: 3}
       count: 6
-      waveTime: 5
+    waveTime: 3
   - enemies:
     - prefab: {fileID: 1475041641008687646, guid: 431dff5ced531dd4b8bc01562c35427a, type: 3}
       count: 10
-      waveTime: 15
+    waveTime: 3
   - enemies:
     - prefab: {fileID: 1475041641008687646, guid: 431dff5ced531dd4b8bc01562c35427a, type: 3}
       count: 20
-      waveTime: 22
+    waveTime: 3
+  MoneyToWin: 10000
